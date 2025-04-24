@@ -1,32 +1,32 @@
-# Hyperplane - Project Bootstrap
-Project bootstrap is a tool belt for quickly setting up standardized structures and configurations in existing or new
-projects. Project bootstrap is designed to be extensible and customizable, allowing you to create your own project templates
-and schemas.
+# Hyperplane - Bootstrap
+Standardizing project structures and configurations of existing or new projects can be a daunting task. Hyperplane
+bootstrap aims to simplify this process by providing a set of tools and templates that can be easily customized and
+extended.
 
-### Usage Example
+#### Hyperplane Bootstrap Comes With
+- **Project Templates**: Predefined templates for various project types (e.g., web applications, microservices, etc.)
+- **Feature Templates**: Predefined templates for common features (e.g., authentication, logging, etc.)
+
+### Usage Example's
 
 #### New Project
-When creating a new project you can use the `project-boostrap` binary to generate a new project structure based on a
-schema.
+When starting a new project, you can use the `project-bootstrap` binary to generate a new project structure based on a schema.
 ```bash
 $ project-bootstrap new api ./example-api
 ```
 
 #### Existing Project
-When working with an existing project, you can use the `feature-bootstrap` binary to add new features or components to 
-the project. This is useful for standardizing the structure and configurations of existing projects.
+When working with an existing project, you can use the `project-bootstrap` binary to add new features or components to the
+project. This is useful for standardizing the structure and configurations of existing projects.
+
 ```bash
 $ feature-bootstrap new api ./example-api
 ```
 
-
-
-
-
-
 ## Schema
+
 Each schema describes the structure of a project. It specifies the directory structure, supported languages, and other
-project-specific configurations. 
+project-specific configurations.
 
 ```yaml
 version: 0.0.1
