@@ -25,16 +25,29 @@ jobs:
         run: |
           go mod download
 
-      - name: Build binary
+      - name: Build binary of project-bootstrap
         run: |
-          go build -o project-bootstrap ./cmd/cli/main.go
+          go build -o project-bootstrap ./cmd/project-bootstrap/main.go
 
-      - name: Upload binary artifact
+      - name: Build binary of feature-bootstrap
+        run: |
+          go build -o feature-bootstrap ./cmd/feature-bootstrap/main.go
+
+      - name: Upload project-bootstrap binary artifact
         uses: actions/upload-artifact@v4
         with:
           name: project-bootstrap
           path: |
             project-bootstrap
+
+      - name: Upload feature-bootstrap binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: feature-bootstrap
+          path: |
+            feature-bootstrap
+      
+      
 
   create_release:
     runs-on: ubuntu-latest
@@ -45,7 +58,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: 'project-bootstrap'
+          pattern: '*-bootstrap'
           merge-multiple: true
           path: dist/
       - name: Determine semver update type (major, minor, patch)
@@ -120,9 +133,10 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          body: "New release of project-bootstrap binaries"
+          body: "New release of bootstrap binaries"
           tag_name: ${{ env.new_tag }}
           files: |
             dist/project-bootstrap
+            dist/feature-bootstrap
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
